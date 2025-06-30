@@ -1,4 +1,4 @@
-module Larousse (lookup) where
+module Larousse (lookup, Definition(..)) where
 
 import           Control.Applicative ((<|>))
 import           Data.Aeson          (ToJSON)
@@ -17,9 +17,9 @@ data Definition = MkDefinition
   deriving stock (Show, Generic)
   deriving anyclass (ToJSON)
 
-lookup :: String -> IO [Definition]
+lookup :: Text -> IO [Definition]
 lookup word = do
-  let url = "https://www.larousse.fr/dictionnaires/francais/" ++ word
+  let url = T.unpack ("https://www.larousse.fr/dictionnaires/francais/" <> word)
   definitions <- scrapeURL url defs
   case definitions of
     Nothing -> return []

@@ -53,10 +53,11 @@ executable larousse
     , servant-server
     , wai
     , warp
+    , text
 
   hs-source-dirs:     app
   default-language:   Haskell2010
-  default-extensions: OverloadedStrings
+  default-extensions: OverloadedStrings, TypeOperators, DataKinds
 
 test-suite larousse-test
   import:           warnings
