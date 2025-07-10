@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Slf4j
-@Repository
+@Repository("larousseSearch")
 public class JsoupSearchRepository implements SearchRepository {
     private final SearchConfig config;
 

@@ -26,10 +26,10 @@ class SearchServiceTest {
     @Test
     void testSearchShouldThrowExceptionWhenGivenEmptySearchTerm() {
         // Arrange
-        final var service = new SearchService(searchRepository);
+        final var service = new SearchService();
 
         // Act
-        final ThrowableAssert.ThrowingCallable invocation = () -> service.search("");
+        final ThrowableAssert.ThrowingCallable invocation = () -> service.search(searchRepository, "");
 
         // Assert
         assertThatThrownBy(invocation)
@@ -43,14 +43,14 @@ class SearchServiceTest {
         final var term = "chat";
 
         when(searchRepository.search(term)).thenReturn(List.of(
-                Definition.builder().build(),
-                Definition.builder().build()
+                Definition.builder().definition("les chats sont bien droles").build(),
+                Definition.builder().definition("les chats sont bien droles").build()
         ));
 
-        final var service = new SearchService(searchRepository);
+        final var service = new SearchService();
 
         // Act
-        final var dfs = service.search(term);
+        final var dfs = service.search(searchRepository, term);
 
         // Assert
         assertThat(dfs).hasSize(2);

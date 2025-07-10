@@ -1,6 +1,5 @@
 package io.github.aloussase.larousse.search.config;
 
-import io.github.aloussase.larousse.search.domain.repository.SearchRepository;
 import io.github.aloussase.larousse.search.domain.service.SearchService;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,9 +15,12 @@ public class SearchConfig {
     @Value("${larousse.baseUrl}")
     private String larousseBaseUrl;
 
+    @Value("${macaco.baseUrl}")
+    private String macacoBaseUrl;
+
     @Bean
-    public SearchService providesSearchService(SearchRepository searchRepository) {
-        return new SearchService(searchRepository);
+    public SearchService providesSearchService() {
+        return new SearchService();
     }
 
 }

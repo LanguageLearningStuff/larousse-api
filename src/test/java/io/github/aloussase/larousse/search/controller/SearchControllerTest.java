@@ -25,8 +25,11 @@ class SearchControllerTest {
     @Autowired
     private MockMvcTester mvc;
 
-    @MockitoBean
+    @MockitoBean("larousseSearch")
     private SearchRepository searchRepository;
+
+    @MockitoBean("macacoSearch")
+    private SearchRepository macacoSearchRepository;
 
     @Test
     void testRequestingDefinitionsWithEmptySearchTermReturnsBadRequest() {
