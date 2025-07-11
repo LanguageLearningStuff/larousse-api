@@ -30,6 +30,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation("io.github.resilience4j:resilience4j-retry:2.2.0")
 
     implementation 'org.jsoup:jsoup:1.21.1'
     implementation 'org.wiremock.integrations:wiremock-spring-boot:3.10.0'
